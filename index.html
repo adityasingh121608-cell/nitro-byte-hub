@@ -3,7 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nitro-Byte | Game Dev Community & Hub</title>
+    
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="1dkz16US3TNMMFymvbJvUdLLs9UOD92laIK2a69lPeQ" />
+
+    <!-- Primary SEO Meta Tags -->
+    <title>Nitro-Byte Hub | Indie Game Publishing & Developer Social Network</title>
+    <meta name="title" content="Nitro-Byte Hub | Indie Game Publishing & Developer Social Network">
+    <meta name="description" content="Nitro-Byte Hub is a free-to-use social network, game publishing, and B2B deal-making platform built for indie game developers and studios.">
+    <meta name="keywords" content="indie games, game publishing, web games, Phaser 3, game dev community, B2B deal room, playable ads">
+    <meta name="author" content="Nitro-Byte Studio">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nitro-byte-hub.vercel.app/">
+    <meta property="og:title" content="Nitro-Byte Hub | Indie Game Publishing">
+    <meta property="og:description" content="Discover, publish, and play indie web games. Connect with game studios and developers worldwide.">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -141,165 +157,4 @@
                     <option value="article">Blog / Article</option>
                 </select>
                 <input type="text" id="postTitle" placeholder="Post Title or Game Name" required>
-                <textarea id="postBody" placeholder="Share your ideas, links, videos, or games..." rows="3" required></textarea>
-                <input type="url" id="gameUrl" placeholder="Game Embed URL (optional)">
-                <button type="submit">Publish Free Post</button>
-            </form>
-        </div>
-
-        <!-- Live Feed Section -->
-        <div class="box">
-            <h3>Community Feed</h3>
-            <div id="postsFeed">Loading posts...</div>
-        </div>
-    </div>
-
-    <script>
-        const SUPABASE_URL = 'https://pzronhvahinbxzvgpyuc.supabase.co';
-        const SUPABASE_ANON_KEY = 'sb_publishable_MDPEgRnaOGc5nFbu5D6E1g_Nvi4m4aX';
-
-        const { createClient } = supabase;
-        const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-        let currentUser = null;
-
-        async function checkUser() {
-            const { data: { session } } = await _supabase.auth.getSession();
-            currentUser = session ? session.user : null;
-            updateAuthUI();
-            loadPosts();
-        }
-
-        function updateAuthUI() {
-            if (currentUser) {
-                document.getElementById('authSection').style.display = 'none';
-                document.getElementById('userSection').style.display = 'block';
-                document.getElementById('postFormContainer').style.display = 'block';
-                document.getElementById('userEmailDisplay').innerText = currentUser.email;
-                document.getElementById('authTitle').innerText = 'Welcome Back!';
-            } else {
-                document.getElementById('authSection').style.display = 'block';
-                document.getElementById('userSection').style.display = 'none';
-                document.getElementById('postFormContainer').style.display = 'none';
-                document.getElementById('authTitle').innerText = 'Account Login / Sign Up';
-            }
-        }
-
-        document.getElementById('signupBtn').addEventListener('click', async () => {
-            const email = document.getElementById('authEmail').value;
-            const password = document.getElementById('authPassword').value;
-            if (!email || !password) { alert('Please enter email and password.'); return; }
-
-            const { data, error } = await _supabase.auth.signUp({ email, password });
-            if (error) {
-                alert('Sign up error: ' + error.message);
-            } else {
-                alert('Account created successfully! You can now log in.');
-            }
-        });
-
-        document.getElementById('loginBtn').addEventListener('click', async () => {
-            const email = document.getElementById('authEmail').value;
-            const password = document.getElementById('authPassword').value;
-            if (!email || !password) { alert('Please enter email and password.'); return; }
-
-            const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
-            if (error) {
-                alert('Login error: ' + error.message);
-            } else {
-                currentUser = data.user;
-                updateAuthUI();
-            }
-        });
-
-        document.getElementById('logoutBtn').addEventListener('click', async () => {
-            await _supabase.auth.signOut();
-            currentUser = null;
-            updateAuthUI();
-        });
-
-        async function loadPosts() {
-            const feedDiv = document.getElementById('postsFeed');
-            const { data, error } = await _supabase.from('posts').select('*').order('created_at', { ascending: false });
-
-            if (error) {
-                feedDiv.innerHTML = '<p style="color: red;">Error loading posts: ' + escapeHtml(error.message) + '</p>';
-                return;
-            }
-
-            if (!data || data.length === 0) {
-                feedDiv.innerHTML = '<p>No posts yet. Be the first to share something!</p>';
-                return;
-            }
-
-            feedDiv.innerHTML = '';
-            data.forEach(post => {
-                const typeBadge = post.content_type ? `<span class="badge">${escapeHtml(post.content_type)}</span>` : '';
-                
-                // Extract game URL if embedded in body text
-                let embedHtml = '';
-                let displayBody = post.body || '';
-                
-                // Simple regex or check for embed URL tag
-                if (displayBody.includes('[Embed URL:')) {
-                    const parts = displayBody.split('[Embed URL:');
-                    displayBody = parts[0];
-                    const urlPart = parts[1].split(']')[0].trim();
-                    embedHtml = `
-                        <div class="game-embed-container">
-                            <iframe src="${escapeHtml(urlPart)}" allowfullscreen></iframe>
-                        </div>
-                    `;
-                }
-
-                feedDiv.innerHTML += `
-                    <div class="post-card">
-                        <div class="post-header">
-                            ${typeBadge}
-                        </div>
-                        <h4>${escapeHtml(post.title)}</h4>
-                        <p>${escapeHtml(displayBody)}</p>
-                        ${embedHtml}
-                    </div>
-                `;
-            });
-        }
-
-        document.getElementById('postForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            if (!currentUser) { alert('You must be logged in to post!'); return; }
-
-            const content_type = document.getElementById('contentType').value;
-            const title = document.getElementById('postTitle').value;
-            const bodyText = document.getElementById('postBody').value;
-            const gameUrl = document.getElementById('gameUrl').value;
-            
-            let fullBody = bodyText;
-            if (gameUrl) {
-                fullBody += '\n[Embed URL: ' + gameUrl + ']';
-            }
-            fullBody += '\n\n(By: ' + currentUser.email + ')';
-
-            const { error } = await _supabase.from('posts').insert([{
-                content_type: content_type,
-                title: title,
-                body: fullBody
-            }]);
-
-            if (error) {
-                alert('Error publishing post: ' + error.message);
-            } else {
-                document.getElementById('postForm').reset();
-                loadPosts();
-            }
-        });
-
-        function escapeHtml(text) {
-            if (!text) return '';
-            return text.toString().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        }
-
-        checkUser();
-    </script>
-</body>
-</html>
+                <textarea id
