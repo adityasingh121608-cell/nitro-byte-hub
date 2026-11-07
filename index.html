@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nitro-Byte | Game Dev Community & Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0f172a;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        h1 {
+            color: #38bdf8;
+            margin-bottom: 5px;
+        }
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        .box {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+        input, textarea, select, button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #475569;
+            background: #0f172a;
+            color: #fff;
+            box-sizing: border-box;
+        }
+        button {
+            background: #0284c7;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0369a1;
+        }
+        .btn-secondary {
+            background: #475569;
+            margin-top: 5px;
+        }
+        .btn-secondary:hover {
+            background: #64748b;
+        }
+        .post-card {
+            background: #334155;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .post-card h4 {
+            margin: 0 0 5px 0;
+            color: #38bdf8;
+        }
+        .post-card p {
+            margin: 0 0 10px 0;
+            color: #cbd5e1;
+            white-space: pre-wrap;
+        }
+        .badge {
+            background: #0284c7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+        .game-embed-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            background: #000;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .game-embed-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #authSection, #postFormContainer {
+            display: none;
+        }
+    </style>
+
+    <!-- Load Supabase JavaScript Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <header>
+        <h1>⚡ NITRO-BYTE HUB</h1>
+        <p>The free social network, game publishing & B2B deal platform for developers.</p>
+    </header>
+
+    <div class="container">
+        <!-- Auth Box (Login / Sign Up) -->
+        <div class="box" id="authBox">
+            <h3 id="authTitle">Account Login</h3>
+            <div id="authSection">
+                <input type="email" id="authEmail" placeholder="Enter your email" required>
+                <input type="password" id="authPassword" placeholder="Enter your password" required>
+                <button id="loginBtn">Log In</button>
+                <button id="signupBtn" class="btn-secondary">Sign Up New Account</button>
+            </div>
+            <div id="userSection" style="display: none;">
+                <p>Logged in as: <strong id="userEmailDisplay" style="color: #38bdf8;"></strong></p>
+                <button id="logoutBtn" class="btn-secondary">Log Out</button>
+            </div>
+        </div>
+
+        <!-- Post Creation Form -->
+        <div class="box" id="postFormContainer">
+            <h3>Create a Post / Share a Game</h3>
+            <form id="postForm">
+                <select id="contentType">
+                    <option value="text">Text / Idea</option>
+                    <option value="game">Game / Playable (Embed URL)</option>
+                    <option value="video">Video / Trailer</option>
+                    <option value="article">Blog / Article</option>
+                </select>
+                <input type="text" id="postTitle" placeholder="Post Title or Game Name" required>
+                <textarea id="postBody" placeholder="Share your ideas, links, videos, or games..." rows="3" required></textarea>
+                <input type="url" id="gameUrl" placeholder="Game Embed URL (optional)">
+                <button type="submit">Publish Free Post</button>
+            </form>
+        </div>
+
+        <!-- Live Feed Section -->
+        <div class="box">
+            <h3>Community Feed</h3>
+            <div id="postsFeed">Loading posts...</div>
+        </div>
+    </div>
+
+    <script>
+        const SUPABASE_URL = 'https://pzronhvahinbxzvgpyuc.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_MDPEgRnaOGc5nFbu5D6E1g_Nvi4m4aX';
+
+        const { createClient } = supabase;
+        const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        let currentUser = null;
+
+        async function checkUser() {
+            const { data: { session } } = await _supabase.auth.getSession();
+            currentUser = session ? session.user : null;
+            updateAuthUI();
+            loadPosts();
+        }
+
+        function updateAuthUI() {
+            if (currentUser) {
+                document.getElementById('authSection').style.display = 'none';
+                document.getElementById('userSection').style.display = 'block';
+                document.getElementById('postFormContainer').style.display = 'block';
+                document.getElementById('userEmailDisplay').innerText = currentUser.email;
+                document.getElementById('authTitle').innerText = 'Welcome Back!';
+            } else {
+                document.getElementById('authSection').style.display = 'block';
+                document.getElementById('userSection').style.display = 'none';
+                document.getElementById('postFormContainer').style.display = 'none';
+                document.getElementById('authTitle').innerText = 'Account Login / Sign Up';
+            }
+        }
+
+        document.getElementById('signupBtn').addEventListener('click', async () => {
+            const email = document.getElementById('authEmail').value;
+            const password = document.getElementById('authPassword').value;
+            if (!email || !password) { alert('Please enter email and password.'); return; }
+
+            const { data, error } = await _supabase.auth.signUp({ email, password });
+            if (error) {
+                alert('Sign up error: ' + error.message);
+            } else {
+                alert('Account created successfully! You can now log in.');
+            }
+        });
+
+        document.getElementById('loginBtn').addEventListener('click', async () => {
+            const email = document.getElementById('authEmail').value;
+            const password = document.getElementById('authPassword').value;
+            if (!email || !password) { alert('Please enter email and password.'); return; }
+
+            const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
+            if (error) {
+                alert('Login error: ' + error.message);
+            } else {
+                currentUser = data.user;
+                updateAuthUI();
+            }
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            await _supabase.auth.signOut();
+            currentUser = null;
+            updateAuthUI();
+        });
+
+        async function loadPosts() {
+            const feedDiv = document.getElementById('postsFeed');
+            const { data, error } = await _supabase.from('posts').select('*').order('created_at', { ascending: false });
+
+            if (error) {
+                feedDiv.innerHTML = '<p style="color: red;">Error loading posts: ' + escapeHtml(error.message) + '</p>';
+                return;
+            }
+
+            if (!data || data.length === 0) {
+                feedDiv.innerHTML = '<p>No posts yet. Be the first to share something!</p>';
+                return;
+            }
+
+            feedDiv.innerHTML = '';
+            data.forEach(post => {
+                const typeBadge = post.content_type ? `<span class="badge">${escapeHtml(post.content_type)}</span>` : '';
+                
+                // Extract game URL if embedded in body text
+                let embedHtml = '';
+                let displayBody = post.body || '';
+                
+                // Simple regex or check for embed URL tag
+                if (displayBody.includes('[Embed URL:')) {
+                    const parts = displayBody.split('[Embed URL:');
+                    displayBody = parts[0];
+                    const urlPart = parts[1].split(']')[0].trim();
+                    embedHtml = `
+                        <div class="game-embed-container">
+                            <iframe src="${escapeHtml(urlPart)}" allowfullscreen></iframe>
+                        </div>
+                    `;
+                }
+
+                feedDiv.innerHTML += `
+                    <div class="post-card">
+                        <div class="post-header">
+                            ${typeBadge}
+                        </div>
+                        <h4>${escapeHtml(post.title)}</h4>
+                        <p>${escapeHtml(displayBody)}</p>
+                        ${embedHtml}
+                    </div>
+                `;
+            });
+        }
+
+        document.getElementById('postForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!currentUser) { alert('You must be logged in to post!'); return; }
+
+            const content_type = document.getElementById('contentType').value;
+            const title = document.getElementById('postTitle').value;
+            const bodyText = document.getElementById('postBody').value;
+            const gameUrl = document.getElementById('gameUrl').value;
+            
+            let fullBody = bodyText;
+            if (gameUrl) {
+                fullBody += '\n[Embed URL: ' + gameUrl + ']';
+            }
+            fullBody += '\n\n(By: ' + currentUser.email + ')';
+
+            const { error } = await _supabase.from('posts').insert([{
+                content_type: content_type,
+                title: title,
+                body: fullBody
+            }]);
+
+            if (error) {
+                alert('Error publishing post: ' + error.message);
+            } else {
+                document.getElementById('postForm').reset();
+                loadPosts();
+            }
+        });
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            return text.toString().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        checkUser();
+    </script>
+</body>
+</html>
