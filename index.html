@@ -8,153 +8,521 @@
     <meta name="google-site-verification" content="1dkz16US3TNMMFymvbJvUdLLs9UOD92laIK2a69lPeQ" />
 
     <!-- Primary SEO Meta Tags -->
-    <title>Nitro-Byte Hub | Indie Game Publishing & Developer Social Network</title>
-    <meta name="title" content="Nitro-Byte Hub | Indie Game Publishing & Developer Social Network">
-    <meta name="description" content="Nitro-Byte Hub is a free-to-use social network, game publishing, and B2B deal-making platform built for indie game developers and studios.">
-    <meta name="keywords" content="indie games, game publishing, web games, Phaser 3, game dev community, B2B deal room, playable ads">
+    <title>Nitro-Byte Hub | Indie Game Publishing & B2B Deal Platform</title>
+    <meta name="title" content="Nitro-Byte Hub | Indie Game Publishing & B2B Deal Platform">
+    <meta name="description" content="Nitro-Byte Hub is a classic gaming and developer platform. Publish indie web games, pitch B2B playable ad deals, and connect with studios worldwide.">
+    <meta name="keywords" content="indie games, game publishing, web games, Phaser 3, game dev community, B2B deal room, playable ads, nitro-byte">
     <meta name="author" content="Nitro-Byte Studio">
 
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nitro-byte-hub.vercel.app/">
-    <meta property="og:title" content="Nitro-Byte Hub | Indie Game Publishing">
-    <meta property="og:description" content="Discover, publish, and play indie web games. Connect with game studios and developers worldwide.">
+    <meta property="og:title" content="Nitro-Byte Hub | Indie Game Publishing & B2B Deal Platform">
+    <meta property="og:description" content="Discover, publish, and play retro web games. Connect with game studios and secure B2B publishing contracts.">
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #0f172a;
-            color: #ffffff;
-            margin: 0;
-            padding: 20px;
+        :root {
+            --bg-color: #090d16;
+            --card-bg: #131c2e;
+            --border-color: #1e293b;
+            --accent-primary: #00f2fe;
+            --accent-secondary: #4facfe;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --danger: #ef4444;
+            --success: #22c55e;
         }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 10px;
+        }
+
         header {
             text-align: center;
-            padding: 20px 0;
-        }
-        h1 {
-            color: #38bdf8;
-            margin-bottom: 5px;
-        }
-        .container {
-            max-width: 650px;
-            margin: 0 auto;
-        }
-        .box {
-            background: #1e293b;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            padding: 30px 15px;
+            background: linear-gradient(135deg, #131c2e, #1a2c4e);
+            border-bottom: 3px solid var(--accent-secondary);
+            border-radius: 12px;
             margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
         }
+
+        h1 {
+            color: var(--accent-primary);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            margin-top: 8px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 900px) {
+            .container {
+                grid-template-columns: 350px 1fr;
+            }
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h3 {
+            color: var(--accent-secondary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
         input, textarea, select, button {
             width: 100%;
             margin-top: 10px;
-            padding: 10px;
-            border-radius: 4px;
-            border: 1px solid #475569;
-            background: #0f172a;
-            color: #fff;
-            box-sizing: border-box;
-        }
-        button {
-            background: #0284c7;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #0369a1;
-        }
-        .btn-secondary {
-            background: #475569;
-            margin-top: 5px;
-        }
-        .btn-secondary:hover {
-            background: #64748b;
-        }
-        .post-card {
-            background: #334155;
-            padding: 15px;
+            padding: 12px;
             border-radius: 6px;
-            margin-top: 15px;
+            border: 1px solid var(--border-color);
+            background: #090d16;
+            color: var(--text-main);
+            font-size: 0.95rem;
         }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 5px rgba(0, 242, 254, 0.3);
+        }
+
+        button {
+            background: linear-gradient(135deg, #00f2fe, #4facfe);
+            color: #090d16;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.1s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #334155;
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            background: #475569;
+        }
+
+        /* Tabs for Social Feed vs B2B Deal Room */
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            background: #1e293b;
+            border: none;
+            color: var(--text-muted);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .tab-btn.active {
+            background: var(--accent-secondary);
+            color: #090d16;
+        }
+
+        .feed-section {
+            display: none;
+        }
+
+        .feed-section.active {
+            display: block;
+        }
+
+        .post-card {
+            background: #1a2538;
+            border: 1px solid var(--border-color);
+            padding: 18px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            transition: transform 0.2s;
+        }
+
+        .post-card:hover {
+            border-color: rgba(79, 172, 254, 0.4);
+        }
+
         .post-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
+
         .post-card h4 {
-            margin: 0 0 5px 0;
-            color: #38bdf8;
+            margin: 0 0 8px 0;
+            color: var(--accent-primary);
+            font-size: 1.1rem;
         }
+
         .post-card p {
-            margin: 0 0 10px 0;
+            margin: 0 0 12px 0;
             color: #cbd5e1;
             white-space: pre-wrap;
+            font-size: 0.95rem;
         }
+
         .badge {
-            background: #0284c7;
-            padding: 2px 6px;
+            background: rgba(0, 242, 254, 0.15);
+            color: var(--accent-primary);
+            padding: 3px 8px;
             border-radius: 4px;
             font-size: 11px;
             text-transform: uppercase;
+            font-weight: bold;
+            border: 1px solid rgba(0, 242, 254, 0.3);
         }
+
+        .badge-deal {
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--success);
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+
         .game-embed-container {
             position: relative;
             width: 100%;
-            height: 350px;
+            height: clamp(300px, 50vw, 450px);
             background: #000;
-            border-radius: 4px;
+            border-radius: 6px;
             overflow: hidden;
-            margin-top: 10px;
+            margin-top: 12px;
+            border: 1px solid var(--border-color);
         }
+
         .game-embed-container iframe {
             width: 100%;
             height: 100%;
             border: none;
         }
-        #authSection, #postFormContainer {
-            display: none;
+
+        .deal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
         }
     </style>
 
-    <!-- Load Supabase JavaScript Library -->
+    <!-- Supabase JS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
     <header>
         <h1>⚡ NITRO-BYTE HUB</h1>
-        <p>The free social network, game publishing & B2B deal platform for developers.</p>
+        <p>Indie Game Studio, Publishing Platform & B2B Deal Network for Developers Worldwide</p>
     </header>
 
     <div class="container">
-        <!-- Auth Box (Login / Sign Up) -->
-        <div class="box" id="authBox">
-            <h3 id="authTitle">Account Login</h3>
-            <div id="authSection">
-                <input type="email" id="authEmail" placeholder="Enter your email" required>
-                <input type="password" id="authPassword" placeholder="Enter your password" required>
-                <button id="loginBtn">Log In</button>
-                <button id="signupBtn" class="btn-secondary">Sign Up New Account</button>
+        <!-- Sidebar: Authentication & Post Creation -->
+        <div class="sidebar">
+            <!-- Auth Box -->
+            <div class="card" id="authCard">
+                <h3 id="authTitle">Account Access</h3>
+                <div id="authSection">
+                    <input type="email" id="authEmail" placeholder="Developer Email" required>
+                    <input type="password" id="authPassword" placeholder="Password" required>
+                    <button id="loginBtn">Log In</button>
+                    <button id="signupBtn" class="btn-secondary">Register Account</button>
+                </div>
+                <div id="userSection" style="display: none;">
+                    <p style="font-size: 0.9rem; margin-bottom: 10px;">Logged in as:<br><strong id="userEmailDisplay" style="color: var(--accent-primary); word-break: break-all;"></strong></p>
+                    <button id="logoutBtn" class="btn-secondary">Log Out</button>
+                </div>
             </div>
-            <div id="userSection" style="display: none;">
-                <p>Logged in as: <strong id="userEmailDisplay" style="color: #38bdf8;"></strong></p>
-                <button id="logoutBtn" class="btn-secondary">Log Out</button>
+
+            <!-- Publish Form Box -->
+            <div class="card" id="postFormContainer" style="display: none;">
+                <h3>Publish to Hub</h3>
+                <form id="postForm">
+                    <select id="contentType">
+                        <option value="game">🕹️ Indie Web Game (Playable Embed)</option>
+                        <option value="deal">💼 B2B Studio Deal / Playable Ad Pitch</option>
+                        <option value="social">💬 Developer Social Update / Idea</option>
+                    </select>
+                    <input type="text" id="postTitle" placeholder="Title / Project Name" required>
+                    <textarea id="postBody" placeholder="Describe your game, pitch, or studio news..." rows="4" required></textarea>
+                    <input type="url" id="gameUrl" placeholder="Embed URL (Itch.io, Vercel, etc.) [Optional]">
+                    <button type="submit">Publish Publicly</button>
+                </form>
             </div>
         </div>
 
-        <!-- Post Creation Form -->
-        <div class="box" id="postFormContainer">
-            <h3>Create a Post / Share a Game</h3>
-            <form id="postForm">
-                <select id="contentType">
-                    <option value="text">Text / Idea</option>
-                    <option value="game">Game / Playable (Embed URL)</option>
-                    <option value="video">Video / Trailer</option>
-                    <option value="article">Blog / Article</option>
-                </select>
-                <input type="text" id="postTitle" placeholder="Post Title or Game Name" required>
-                <textarea id
+        <!-- Main Hub Feed: Social & B2B Deals -->
+        <div class="main-content">
+            <div class="card">
+                <div class="nav-tabs">
+                    <button class="tab-btn active" onclick="switchTab('all')">🌐 All Hub Activity</button>
+                    <button class="tab-btn" onclick="switchTab('game')">🎮 Web Games</button>
+                    <button class="tab-btn" onclick="switchTab('deal')">💼 B2B Deal Room</button>
+                </div>
+
+                <div id="postsFeed">
+                    <p style="color: var(--text-muted); text-align: center; padding: 20px;">Loading decentralized community feeds...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Nitro-Byte Studio & Nitro-Hub Platform. Optimized for Windows, Mac, Linux, Android, and iOS.</p>
+    </footer>
+
+    <script>
+        const SUPABASE_URL = 'https://pzronhvahinbxzvgpyuc.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_MDPEgRnaOGc5nFbu5D6E1g_Nvi4m4aX';
+
+        const { createClient } = supabase;
+        const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        let currentUser = null;
+        let activeFilter = 'all';
+
+        async function checkUser() {
+            const { data: { session } } = await _supabase.auth.getSession();
+            currentUser = session ? session.user : null;
+            updateAuthUI();
+            loadPosts();
+        }
+
+        function updateAuthUI() {
+            if (currentUser) {
+                document.getElementById('authSection').style.display = 'none';
+                document.getElementById('userSection').style.display = 'block';
+                document.getElementById('postFormContainer').style.display = 'block';
+                document.getElementById('userEmailDisplay').innerText = currentUser.email;
+                document.getElementById('authTitle').innerText = 'Studio Control Center';
+            } else {
+                document.getElementById('authSection').style.display = 'block';
+                document.getElementById('userSection').style.display = 'none';
+                document.getElementById('postFormContainer').style.display = 'none';
+                document.getElementById('authTitle').innerText = 'Account Access';
+            }
+        }
+
+        document.getElementById('signupBtn').addEventListener('click', async () => {
+            const email = document.getElementById('authEmail').value;
+            const password = document.getElementById('authPassword').value;
+            if (!email || !password) { alert('Please fill in your email and password.'); return; }
+
+            const { error } = await _supabase.auth.signUp({ email, password });
+            if (error) {
+                alert('Sign up error: ' + error.message);
+            } else {
+                alert('Registration successful! You can now log in.');
+            }
+        });
+
+        document.getElementById('loginBtn').addEventListener('click', async () => {
+            const email = document.getElementById('authEmail').value;
+            const password = document.getElementById('authPassword').value;
+            if (!email || !password) { alert('Please fill in your email and password.'); return; }
+
+            const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
+            if (error) {
+                alert('Login error: ' + error.message);
+            } else {
+                currentUser = data.user;
+                updateAuthUI();
+            }
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            await _supabase.auth.signOut();
+            currentUser = null;
+            updateAuthUI();
+        });
+
+        function switchTab(filter) {
+            activeFilter = filter;
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            loadPosts();
+        }
+
+        async function loadPosts() {
+            const feedDiv = document.getElementById('postsFeed');
+            let query = _supabase.from('posts').select('*').order('created_at', { ascending: false });
+
+            const { data, error } = await query;
+
+            if (error) {
+                feedDiv.innerHTML = `<p style="color: var(--danger);">Error loading feed: ${escapeHtml(error.message)}</p>`;
+                return;
+            }
+
+            if (!data || data.length === 0) {
+                feedDiv.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 20px;">No posts or deals published yet. Be the first creator to share!</p>';
+                return;
+            }
+
+            // Filter data client-side based on tabs
+            const filteredData = data.filter(post => {
+                if (activeFilter === 'all') return true;
+                if (activeFilter === 'game') return post.content_type === 'game';
+                if (activeFilter === 'deal') return post.content_type === 'deal';
+                return true;
+            });
+
+            if (filteredData.length === 0) {
+                feedDiv.innerHTML = `<p style="color: var(--text-muted); text-align: center; padding: 20px;">No posts found in this category.</p>`;
+                return;
+            }
+
+            feedDiv.innerHTML = '';
+            filteredData.forEach(post => {
+                let badgeClass = 'badge';
+                let typeLabel = post.content_type || 'social';
+                if (typeLabel === 'deal') {
+                    badgeClass = 'badge badge-deal';
+                    typeLabel = '💼 B2B Deal Pitch';
+                } else if (typeLabel === 'game') {
+                    typeLabel = '🕹️ Web Game';
+                } else {
+                    typeLabel = '💬 Community';
+                }
+                
+                let embedHtml = '';
+                let displayBody = post.body || '';
+                
+                if (displayBody.includes('[Embed URL:')) {
+                    const parts = displayBody.split('[Embed URL:');
+                    displayBody = parts[0];
+                    const urlPart = parts[1].split(']')[0].trim();
+                    embedHtml = `
+                        <div class="game-embed-container">
+                            <iframe src="${escapeHtml(urlPart)}" allowfullscreen></iframe>
+                        </div>
+                    `;
+                }
+
+                let dealButton = '';
+                if (post.content_type === 'deal') {
+                    dealButton = `
+                        <div class="deal-actions">
+                            <button onclick="alert('Inquiry sent to studio publisher! They will reach out to discuss licensing.')">💼 Express B2B Interest</button>
+                        </div>
+                    `;
+                }
+
+                feedDiv.innerHTML += `
+                    <div class="post-card">
+                        <div class="post-header">
+                            <span class="${badgeClass}">${typeLabel}</span>
+                            <span>${new Date(post.created_at).toLocaleDateString()}</span>
+                        </div>
+                        <h4>${escapeHtml(post.title)}</h4>
+                        <p>${escapeHtml(displayBody)}</p>
+                        ${embedHtml}
+                        ${dealButton}
+                    </div>
+                `;
+            });
+        }
+
+        document.getElementById('postForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!currentUser) { alert('You must be authenticated to publish!'); return; }
+
+            const content_type = document.getElementById('contentType').value;
+            const title = document.getElementById('postTitle').value;
+            const bodyText = document.getElementById('postBody').value;
+            const gameUrl = document.getElementById('gameUrl').value;
+            
+            let fullBody = bodyText;
+            if (gameUrl) {
+                fullBody += '\n[Embed URL: ' + gameUrl + ']';
+            }
+            fullBody += '\n\n(Published by: ' + currentUser.email + ')';
+
+            const { error } = await _supabase.from('posts').insert([{
+                content_type: content_type,
+                title: title,
+                body: fullBody
+            }]);
+
+            if (error) {
+                alert('Publishing error: ' + error.message);
+            } else {
+                document.getElementById('postForm').reset();
+                loadPosts();
+            }
+        });
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            return text.toString().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        checkUser();
+    </script>
+</body>
+</html>
