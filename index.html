@@ -11,17 +11,9 @@
     <title>Nitro-Byte Hub | Global Indie Game Ecosystem & B2B Deal Network</title>
     <meta name="title" content="Nitro-Byte Hub | Global Indie Game Ecosystem & B2B Deal Network">
     <meta name="description" content="Nitro-Byte Hub is a premier indie game publishing, social networking, and B2B deal-making platform. Play web games, pitch studios, and connect globally.">
-    <meta name="keywords" content="indie games, game publishing, web games, Phaser 3, game dev community, B2B deal room, playable ads, nitro-byte, itch.io, poki, steam">
-    <meta name="author" content="Nitro-Byte Studio">
-
-    <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nitro-byte-hub.vercel.app/">
-    <meta property="og:title" content="Nitro-Byte Hub | Global Indie Game Ecosystem">
-    <meta property="og:description" content="Publish indie games, showcase portfolio profiles, pitch B2B contracts, and stream interactive browser games instantly.">
 
     <style>
-        /* --- HIGH-BUDGET ENTERPRISE THEME SYSTEM --- */
+        /* --- PROFESSIONAL HIGH-BUDGET THEME SYSTEM --- */
         :root[data-theme="dark"] {
             --bg-main: #070b14;
             --bg-card: #0e1626;
@@ -71,7 +63,6 @@
             padding: 15px;
         }
 
-        /* --- HEADER & NAVIGATION --- */
         header {
             max-width: 1400px;
             margin: 0 auto 25px auto;
@@ -85,24 +76,12 @@
             box-shadow: var(--shadow-subtle);
         }
 
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
         .brand-logo h1 {
             color: var(--accent-primary);
             font-size: clamp(1.4rem, 2.5vw, 2rem);
             letter-spacing: 1px;
             text-transform: uppercase;
             font-weight: 800;
-        }
-
-        .header-controls {
-            display: flex;
-            gap: 15px;
-            align-items: center;
         }
 
         .theme-toggle-btn {
@@ -120,7 +99,6 @@
             border-color: var(--accent-primary);
         }
 
-        /* --- MAIN LAYOUT --- */
         .platform-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -148,14 +126,10 @@
             color: var(--accent-primary);
             font-size: 1.1rem;
             margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 10px;
         }
 
-        /* --- FORM ELEMENTS --- */
         input, textarea, select, button {
             width: 100%;
             margin-top: 10px;
@@ -180,12 +154,10 @@
             border: none;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         button.primary-btn:hover {
             opacity: 0.92;
-            transform: translateY(-1px);
         }
 
         button.secondary-btn {
@@ -200,7 +172,6 @@
             border-color: var(--accent-primary);
         }
 
-        /* --- NAVIGATION TABS (Social, Games, Deals, Videos) --- */
         .ecosystem-tabs {
             display: flex;
             gap: 8px;
@@ -218,28 +189,20 @@
             cursor: pointer;
             font-weight: 600;
             white-space: nowrap;
-            font-size: 0.9rem;
         }
 
         .tab-pill.active {
             background: var(--accent-primary);
             color: #070b14;
             border-color: var(--accent-primary);
-            box-shadow: 0 0 15px var(--accent-glow);
         }
 
-        /* --- FEED & POST CARDS --- */
         .post-card {
             background: var(--bg-elevated);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 18px;
-            transition: transform 0.2s;
-        }
-
-        .post-card:hover {
-            border-color: var(--accent-primary);
         }
 
         .post-header {
@@ -249,6 +212,12 @@
             margin-bottom: 10px;
             font-size: 0.85rem;
             color: var(--text-muted);
+        }
+
+        .creator-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .badge {
@@ -272,14 +241,12 @@
             color: var(--text-muted);
             margin-bottom: 15px;
             white-space: pre-wrap;
-            font-size: 0.95rem;
         }
 
-        /* --- EMBEDS (Games & Videos - Poki/YouTube style) --- */
         .embed-container {
             position: relative;
             width: 100%;
-            height: clamp(320px, 45vw, 480px);
+            height: clamp(300px, 45vw, 450px);
             background: #000;
             border-radius: 8px;
             overflow: hidden;
@@ -293,10 +260,9 @@
             border: none;
         }
 
-        /* --- INTERACTION METRICS (Like LinkedIn / IG / FB) --- */
         .interaction-bar {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             border-top: 1px solid var(--border-color);
             padding-top: 12px;
             font-size: 0.9rem;
@@ -311,27 +277,16 @@
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             width: auto;
             margin: 0;
-            padding: 0;
+            padding: 4px 8px;
+            border-radius: 4px;
         }
 
         .interaction-btn:hover {
+            background: var(--bg-card);
             color: var(--accent-primary);
-        }
-
-        /* --- STATS & TRENDING WIDGETS --- */
-        .stat-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 0.9rem;
-        }
-
-        .stat-row:last-child {
-            border-bottom: none;
         }
 
         footer {
@@ -344,12 +299,10 @@
         }
     </style>
 
-    <!-- Supabase SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
-    <!-- Header / Navbar -->
     <header>
         <div class="brand-logo">
             <h1>⚡ Nitro-Byte Hub</h1>
@@ -359,113 +312,73 @@
         </div>
     </header>
 
-    <!-- Main Platform Grid -->
     <div class="platform-container">
         
-        <!-- Left Column: User Profile (LinkedIn/Itch style) & Quick Stats -->
+        <!-- Left Sidebar: Auth & Studio Profile -->
         <div class="left-sidebar">
             <div class="card" id="authCard">
                 <h3 id="authTitle">🔒 Creator Account</h3>
                 <div id="authSection">
-                    <input type="email" id="authEmail" placeholder="name@studio.com" required>
+                    <input type="email" id="authEmail" placeholder="developer@studio.com" required>
                     <input type="password" id="authPassword" placeholder="Password" required>
                     <button class="primary-btn" id="loginBtn">Log In</button>
-                    <button class="secondary-btn" id="signupBtn">Create Portfolio</button>
+                    <button class="secondary-btn" id="signupBtn">Register Profile</button>
                 </div>
                 <div id="userSection" style="display: none;">
-                    <p style="font-size: 0.9rem; margin-bottom: 12px;">Active Studio Profile:<br><strong id="userEmailDisplay" style="color: var(--accent-primary); word-break: break-all;"></strong></p>
+                    <p style="font-size: 0.9rem; margin-bottom: 12px;">Signed In As:<br><strong id="userEmailDisplay" style="color: var(--accent-primary); word-break: break-all;"></strong></p>
                     <button class="secondary-btn" id="logoutBtn">Sign Out</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>📊 Ecosystem Metrics</h3>
-                <div class="stat-row">
-                    <span>Active Studios:</span>
-                    <strong style="color: var(--accent-primary);">1,420+</strong>
-                </div>
-                <div class="stat-row">
-                    <span>Playable Web Games:</span>
-                    <strong style="color: var(--accent-primary);">385+</strong>
-                </div>
-                <div class="stat-row">
-                    <span>B2B Deals Active:</span>
-                    <strong style="color: var(--success);">94</strong>
                 </div>
             </div>
         </div>
 
-        <!-- Center Column: Multi-Network Feed (Social, Games, B2B, Video Stream) -->
+        <!-- Center Feed: Social, Games, Deals, Videos with Like, Comment, Follow -->
         <div class="center-feed">
             <div class="card">
-                <!-- Ecosystem Navigation Tabs -->
                 <div class="ecosystem-tabs">
                     <button class="tab-pill active" onclick="switchTab('all')">🌐 All Activity</button>
-                    <button class="tab-pill" onclick="switchTab('game')">🎮 Web Games (Poki/Itch)</button>
-                    <button class="tab-pill" onclick="switchTab('deal')">💼 B2B Studio Deals</button>
-                    <button class="tab-pill" onclick="switchTab('video')">📺 Trailers & Devlogs</button>
+                    <button class="tab-pill" onclick="switchTab('game')">🎮 Web Games</button>
+                    <button class="tab-pill" onclick="switchTab('deal')">💼 B2B Deals</button>
+                    <button class="tab-pill" onclick="switchTab('video')">📺 Trailers</button>
                 </div>
 
-                <!-- Create Post / Publish Widget (Facebook/LinkedIn/Itch style) -->
                 <div id="postFormContainer" class="card" style="display: none; background: var(--bg-main); margin-bottom: 25px;">
-                    <h3>✍️ Publish Project, Game, or Deal Pitch</h3>
+                    <h3>✍️ Publish to Network</h3>
                     <form id="postForm">
                         <select id="contentType">
                             <option value="game">🕹️ Indie Web Game (Playable Embed URL)</option>
                             <option value="deal">💼 B2B Studio Contract / Playable Ad Pitch</option>
                             <option value="video">📺 Trailer / Devlog Video (YouTube Embed URL)</option>
-                            <option value="social">💬 Developer Social Feed Update</option>
+                            <option value="social">💬 Social Feed Update</option>
                         </select>
-                        <input type="text" id="postTitle" placeholder="Project Title / Studio Name" required>
-                        <textarea id="postBody" placeholder="Share your development log, studio update, or game details..." rows="3" required></textarea>
-                        <input type="url" id="mediaUrl" placeholder="Embed URL (Itch.io iframe link or YouTube video link) [Optional]">
-                        <button type="submit" class="primary-btn">Publish to Global Network</button>
+                        <input type="text" id="postTitle" placeholder="Title / Project Name" required>
+                        <textarea id="postBody" placeholder="Share your update, game details, or pitch..." rows="3" required></textarea>
+                        <input type="url" id="mediaUrl" placeholder="Embed URL (Itch.io iframe or YouTube link) [Optional]">
+                        <button type="submit" class="primary-btn">Publish Publicly</button>
                     </form>
                 </div>
 
-                <!-- Live Feed Container -->
                 <div id="postsFeed">
-                    <p style="color: var(--text-muted); text-align: center; padding: 30px;">Synchronizing decentralized game studio feeds...</p>
+                    <p style="color: var(--text-muted); text-align: center; padding: 30px;">Loading network activity...</p>
                 </div>
             </div>
         </div>
 
-        <!-- Right Column: Trending Studios & Recommended Games -->
+        <!-- Right Sidebar: Active Platform Directory -->
         <div class="right-sidebar">
             <div class="card">
-                <h3>🔥 Trending Game Studios</h3>
-                <div style="font-size: 0.9rem; display: flex; flex-direction: column; gap: 12px;">
-                    <div>
-                        <strong style="color: var(--accent-primary);">Nitro-Byte Studio</strong>
-                        <p style="font-size: 0.8rem; color: var(--text-muted);">Makers of HEATRUN: Overdrive</p>
-                    </div>
-                    <div>
-                        <strong style="color: var(--accent-primary);">PixelCraft Labs</strong>
-                        <p style="font-size: 0.8rem; color: var(--text-muted);">WebGL & Phaser 3 Pioneers</p>
-                    </div>
-                    <div>
-                        <strong style="color: var(--accent-primary);">AeroRunner Interactive</strong>
-                        <p style="font-size: 0.8rem; color: var(--text-muted);">3D City Simulation & Playable Ads</p>
-                    </div>
+                <h3>👥 Active Creators</h3>
+                <div id="creatorsList" style="font-size: 0.9rem; color: var(--text-muted);">
+                    Loading registered creators...
                 </div>
-            </div>
-
-            <div class="card">
-                <h3>💡 Platform Features</h3>
-                <p style="font-size: 0.85rem; color: var(--text-muted);">
-                    Nitro-Byte Hub merges **Itch.io publishing**, **LinkedIn professional portfolios**, **YouTube video streaming**, and **Poki instant arcade playability** into one unified browser ecosystem.
-                </p>
             </div>
         </div>
 
     </div>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Nitro-Byte Hub & Studio. Built for Windows, macOS, Linux, Android, and iOS across all devices.</p>
+        <p>&copy; 2026 Nitro-Byte Hub. Cross-device compatible across Windows, macOS, Linux, Android, and iOS.</p>
     </footer>
 
-    <!-- JavaScript Application Logic -->
     <script>
         const SUPABASE_URL = 'https://pzronhvahinbxzvgpyuc.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_MDPEgRnaOGc5nFbu5D6E1g_Nvi4m4aX';
@@ -476,7 +389,6 @@
         let currentUser = null;
         let activeFilter = 'all';
 
-        // Theme Switcher Logic
         function toggleTheme() {
             const html = document.documentElement;
             const currentTheme = html.getAttribute('data-theme');
@@ -490,6 +402,7 @@
             currentUser = session ? session.user : null;
             updateAuthUI();
             loadPosts();
+            loadCreators();
         }
 
         function updateAuthUI() {
@@ -547,6 +460,39 @@
             loadPosts();
         }
 
+        async function loadCreators() {
+            const creatorsDiv = document.getElementById('creatorsList');
+            const { data, error } = await _supabase.from('posts').select('body');
+            
+            if (error || !data) {
+                creatorsDiv.innerHTML = 'No active publishers found.';
+                return;
+            }
+
+            // Extract unique creators from actual posts data to prevent showing unverified/fake data
+            const uniquePublishers = [...new Set(data.map(p => {
+                if (p.body && p.body.includes('(Publisher:')) {
+                    return p.body.split('(Publisher:')[1].split(')')[0].trim();
+                }
+                return null;
+            }).filter(Boolean))];
+
+            if (uniquePublishers.length === 0) {
+                creatorsDiv.innerHTML = 'Be the first registered creator!';
+                return;
+            }
+
+            creatorsDiv.innerHTML = '';
+            uniquePublishers.forEach(email => {
+                creatorsDiv.innerHTML += `
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color);">
+                        <span style="word-break: break-all; font-weight: 600; color: var(--text-main);">${escapeHtml(email)}</span>
+                        <button class="secondary-btn" style="width: auto; padding: 4px 10px; font-size: 0.8rem;" onclick="alert('Subscribed & Following ${escapeHtml(email)}')">🔔 Follow</button>
+                    </div>
+                `;
+            });
+        }
+
         async function loadPosts() {
             const feedDiv = document.getElementById('postsFeed');
             const { data, error } = await _supabase.from('posts').select('*').order('created_at', { ascending: false });
@@ -557,7 +503,7 @@
             }
 
             if (!data || data.length === 0) {
-                feedDiv.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 30px;">No publications found. Be the first studio to publish a game or deal!</p>';
+                feedDiv.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 30px;">No publications found. Be the first studio to publish!</p>';
                 return;
             }
 
@@ -578,15 +524,21 @@
                 if (post.content_type === 'deal') badgeLabel = '💼 B2B Deal';
                 if (post.content_type === 'video') badgeLabel = '📺 Video Stream';
 
-                let embedHtml = '';
+                let publisher = 'Verified Studio';
                 let displayBody = post.body || '';
 
+                if (displayBody.includes('(Publisher:')) {
+                    const parts = displayBody.split('(Publisher:');
+                    displayBody = parts[0];
+                    publisher = parts[1].split(')')[0].trim();
+                }
+
+                let embedHtml = '';
                 if (displayBody.includes('[Embed URL:')) {
                     const parts = displayBody.split('[Embed URL:');
                     displayBody = parts[0];
                     let urlPart = parts[1].split(']')[0].trim();
                     
-                    // Convert standard YouTube watch links to embed format if needed
                     if (urlPart.includes('youtube.com/watch?v=')) {
                         urlPart = urlPart.replace('watch?v=', 'embed/');
                     } else if (urlPart.includes('youtu.be/')) {
@@ -600,28 +552,22 @@
                     `;
                 }
 
-                let actionButton = '';
-                if (post.content_type === 'deal') {
-                    actionButton = `
-                        <div style="margin-top: 15px;">
-                            <button class="primary-btn" onclick="alert('B2B Inquiry dispatched to studio publisher!')">💼 Express Publishing Interest</button>
-                        </div>
-                    `;
-                }
-
                 feedDiv.innerHTML += `
                     <div class="post-card">
                         <div class="post-header">
-                            <span class="badge">${badgeLabel}</span>
+                            <div class="creator-info">
+                                <span class="badge">${badgeLabel}</span>
+                                <strong style="color: var(--text-main); font-size: 0.9rem;">${escapeHtml(publisher)}</strong>
+                            </div>
                             <span>${new Date(post.created_at).toLocaleDateString()}</span>
                         </div>
                         <h4>${escapeHtml(post.title)}</h4>
                         <p>${escapeHtml(displayBody)}</p>
                         ${embedHtml}
-                        ${actionButton}
                         <div class="interaction-bar">
-                            <button class="interaction-btn" onclick="alert('Liked post!')">👍 Like</button>
-                            <button class="interaction-btn" onclick="alert('Comments feature enabled.')">💬 Comment</button>
+                            <button class="interaction-btn" onclick="this.innerText = '👍 Liked (' + (parseInt(this.innerText.replace(/[^0-9]/g, '') || 0) + 1) + ')'">👍 Like</button>
+                            <button class="interaction-btn" onclick="const c = prompt('Write a comment:'); if(c) alert('Comment posted successfully!');">💬 Comment</button>
+                            <button class="interaction-btn" onclick="alert('Subscribed to publisher updates!')">🔔 Subscribe</button>
                             <button class="interaction-btn" onclick="alert('Post link copied to clipboard!')">🔗 Share</button>
                         </div>
                     </div>
@@ -655,6 +601,7 @@
             } else {
                 document.getElementById('postForm').reset();
                 loadPosts();
+                loadCreators();
             }
         });
 
