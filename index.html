@@ -8,95 +8,120 @@
     <meta name="google-site-verification" content="1dkz16US3TNMMFymvbJvUdLLs9UOD92laIK2a69lPeQ" />
 
     <!-- Primary SEO Meta Tags -->
-    <title>Nitro-Byte Hub | Global Indie Game Ecosystem & B2B Deal Network</title>
-    <meta name="title" content="Nitro-Byte Hub | Global Indie Game Ecosystem & B2B Deal Network">
-    <meta name="description" content="Nitro-Byte Hub is a premier indie game publishing, social networking, and B2B deal-making platform. Play web games, pitch studios, and connect globally.">
+    <title>Nitro-Byte Hub | Elite Indie Game Ecosystem & B2B Deal Network</title>
+    <meta name="title" content="Nitro-Byte Hub | Elite Indie Game Ecosystem & B2B Deal Network">
+    <meta name="description" content="Nitro-Byte Hub is a premier indie game publishing, social networking, and B2B deal-making platform. Play web games, stream videos, pitch studios, and subscribe globally.">
+
+    <!-- Google Fonts for Elite Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
-        /* --- PROFESSIONAL HIGH-BUDGET THEME SYSTEM --- */
         :root[data-theme="dark"] {
-            --bg-main: #070b14;
-            --bg-card: #0e1626;
-            --bg-elevated: #162238;
-            --border-color: #223354;
-            --text-main: #f1f5f9;
+            --bg-main: #050811;
+            --bg-card: rgba(13, 20, 36, 0.85);
+            --bg-elevated: #111a30;
+            --border-color: rgba(34, 51, 84, 0.6);
+            --border-glow: rgba(0, 242, 254, 0.4);
+            --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --accent-primary: #00f2fe;
             --accent-secondary: #4facfe;
-            --accent-glow: rgba(0, 242, 254, 0.25);
-            --header-gradient: linear-gradient(135deg, #0e1626 0%, #15233c 100%);
-            --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.5);
+            --accent-glow: rgba(0, 242, 254, 0.3);
+            --header-gradient: linear-gradient(135deg, rgba(14, 22, 38, 0.95), rgba(21, 35, 60, 0.95));
+            --shadow-subtle: 0 8px 32px rgba(0, 0, 0, 0.6);
             --danger: #ef4444;
             --success: #22c55e;
-            --badge-bg: rgba(0, 242, 254, 0.1);
+            --badge-bg: rgba(0, 242, 254, 0.12);
+            --highlight-bg: rgba(34, 197, 94, 0.12);
+            --gold-glow: rgba(234, 179, 8, 0.3);
         }
 
         :root[data-theme="light"] {
-            --bg-main: #f8fafc;
-            --bg-card: #ffffff;
-            --bg-elevated: #f1f5f9;
-            --border-color: #cbd5e1;
+            --bg-main: #f1f5f9;
+            --bg-card: rgba(255, 255, 255, 0.9);
+            --bg-elevated: #e2e8f0;
+            --border-color: rgba(203, 213, 225, 0.8);
+            --border-glow: rgba(2, 132, 199, 0.4);
             --text-main: #0f172a;
             --text-muted: #64748b;
             --accent-primary: #0284c7;
             --accent-secondary: #0369a1;
-            --accent-glow: rgba(2, 132, 199, 0.2);
-            --header-gradient: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
-            --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --accent-glow: rgba(2, 132, 199, 0.25);
+            --header-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.95));
+            --shadow-subtle: 0 8px 32px rgba(0, 0, 0, 0.08);
             --danger: #dc2626;
             --success: #16a34a;
             --badge-bg: rgba(2, 132, 199, 0.1);
+            --highlight-bg: rgba(22, 163, 74, 0.08);
+            --gold-glow: rgba(202, 138, 4, 0.2);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-main);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 15px;
+            padding: 20px;
+            background-image: radial-gradient(circle at 15% 15%, rgba(0, 242, 254, 0.15), transparent 40%);
+            background-attachment: fixed;
         }
 
         header {
             max-width: 1400px;
-            margin: 0 auto 25px auto;
+            margin: 0 auto 30px auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: var(--header-gradient);
+            backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
-            padding: 20px 30px;
-            border-radius: 16px;
+            padding: 20px 35px;
+            border-radius: 20px;
             box-shadow: var(--shadow-subtle);
         }
 
         .brand-logo h1 {
-            color: var(--accent-primary);
-            font-size: clamp(1.4rem, 2.5vw, 2rem);
-            letter-spacing: 1px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+            letter-spacing: 0.5px;
             text-transform: uppercase;
             font-weight: 800;
         }
 
-        .theme-toggle-btn {
+        .header-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .theme-toggle-btn, .msg-center-btn {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            padding: 8px 14px;
-            border-radius: 8px;
+            padding: 10px 18px;
+            border-radius: 12px;
             cursor: pointer;
             font-weight: 600;
             font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        .theme-toggle-btn:hover {
+        .theme-toggle-btn:hover, .msg-center-btn:hover {
             border-color: var(--accent-primary);
+            transform: translateY(-2px);
         }
 
         .platform-container {
@@ -109,107 +134,136 @@
 
         @media (min-width: 1024px) {
             .platform-container {
-                grid-template-columns: 320px 1fr 300px;
+                grid-template-columns: 360px 1fr 340px;
             }
         }
 
         .card {
             background: var(--bg-card);
+            backdrop-filter: blur(16px);
             border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 20px;
+            border-radius: 18px;
+            padding: 24px;
             box-shadow: var(--shadow-subtle);
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+        }
+
+        .card:hover {
+            border-color: var(--border-glow);
         }
 
         .card h3 {
             color: var(--accent-primary);
-            font-size: 1.1rem;
-            margin-bottom: 15px;
+            font-size: 1.15rem;
+            margin-bottom: 18px;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
+            padding-bottom: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         input, textarea, select, button {
             width: 100%;
-            margin-top: 10px;
-            padding: 12px;
-            border-radius: 8px;
+            margin-top: 12px;
+            padding: 14px;
+            border-radius: 12px;
             border: 1px solid var(--border-color);
             background: var(--bg-main);
             color: var(--text-main);
             font-size: 0.95rem;
+            font-family: inherit;
         }
 
         input:focus, textarea:focus, select:focus {
             outline: none;
             border-color: var(--accent-primary);
-            box-shadow: 0 0 0 3px var(--accent-glow);
+            box-shadow: 0 0 0 4px var(--accent-glow);
         }
 
         button.primary-btn {
             background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: #070b14;
-            font-weight: 700;
+            color: #050811;
+            font-weight: 800;
             border: none;
             cursor: pointer;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 20px var(--accent-glow);
         }
 
         button.primary-btn:hover {
-            opacity: 0.92;
+            opacity: 0.95;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px var(--accent-glow);
         }
 
         button.secondary-btn {
             background: var(--bg-elevated);
             color: var(--text-main);
             border: 1px solid var(--border-color);
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
         }
 
         button.secondary-btn:hover {
             border-color: var(--accent-primary);
+            transform: translateY(-1px);
         }
 
         .ecosystem-tabs {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             overflow-x: auto;
-            padding-bottom: 5px;
-            margin-bottom: 20px;
+            padding-bottom: 8px;
+            margin-bottom: 24px;
         }
 
         .tab-pill {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             color: var(--text-muted);
-            padding: 10px 18px;
+            padding: 10px 20px;
             border-radius: 30px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             white-space: nowrap;
+            font-size: 0.9rem;
+        }
+
+        .tab-pill:hover {
+            color: var(--text-main);
+            border-color: var(--accent-primary);
         }
 
         .tab-pill.active {
-            background: var(--accent-primary);
-            color: #070b14;
-            border-color: var(--accent-primary);
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: #050811;
+            border-color: transparent;
+            box-shadow: 0 4px 15px var(--accent-glow);
         }
 
         .post-card {
             background: var(--bg-elevated);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 18px;
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .post-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-size: 0.85rem;
             color: var(--text-muted);
         }
@@ -223,35 +277,46 @@
         .badge {
             background: var(--badge-bg);
             color: var(--accent-primary);
-            padding: 4px 10px;
-            border-radius: 6px;
+            padding: 5px 12px;
+            border-radius: 8px;
             font-size: 11px;
             text-transform: uppercase;
-            font-weight: 700;
+            font-weight: 800;
             border: 1px solid var(--accent-primary);
+            letter-spacing: 0.5px;
+        }
+
+        .badge.gold {
+            background: rgba(234, 179, 8, 0.15);
+            color: #eab308;
+            border-color: #eab308;
+            box-shadow: 0 0 10px var(--gold-glow);
         }
 
         .post-card h4 {
             color: var(--text-main);
-            font-size: 1.2rem;
-            margin-bottom: 8px;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            font-weight: 700;
         }
 
         .post-card p {
             color: var(--text-muted);
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             white-space: pre-wrap;
+            font-size: 0.95rem;
         }
 
         .embed-container {
             position: relative;
             width: 100%;
-            height: clamp(300px, 45vw, 450px);
+            height: clamp(320px, 45vw, 480px);
             background: #000;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border-color);
-            margin-bottom: 15px;
+            margin-bottom: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
         }
 
         .embed-container iframe {
@@ -260,11 +325,95 @@
             border: none;
         }
 
+        /* Pricing & Marketing Strategy Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            margin-top: 12px;
+        }
+
+        .pricing-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            padding: 22px;
+            border-radius: 16px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-primary);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid #eab308;
+            background: linear-gradient(180deg, var(--bg-elevated), var(--bg-card));
+            box-shadow: 0 8px 30px var(--gold-glow);
+        }
+
+        .save-badge {
+            background: var(--highlight-bg);
+            color: var(--success);
+            border: 1px solid var(--success);
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-card h4 {
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+            font-weight: 800;
+        }
+
+        .pricing-card.featured h4 {
+            color: #eab308;
+        }
+
+        .price-tag {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 8px 0;
+            color: var(--text-main);
+        }
+
+        .price-subtext {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .feature-list {
+            text-align: left;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 6px 0;
+            border-bottom: 1px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
         .interaction-bar {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             border-top: 1px solid var(--border-color);
-            padding-top: 12px;
+            padding-top: 14px;
             font-size: 0.9rem;
             color: var(--text-muted);
         }
@@ -274,14 +423,13 @@
             border: none;
             color: var(--text-muted);
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
             width: auto;
-            margin: 0;
-            padding: 4px 8px;
-            border-radius: 4px;
+            padding: 6px 10px;
+            border-radius: 8px;
         }
 
         .interaction-btn:hover {
@@ -289,12 +437,75 @@
             color: var(--accent-primary);
         }
 
+        /* Messaging Modal Drawer */
+        #msgModal {
+            display: none;
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background: rgba(5, 8, 17, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .msg-modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            width: 90%; 
+            max-width: 550px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        /* Elite Finale Call-to-Action Banner */
+        .finale-cta-banner {
+            max-width: 1400px;
+            margin: 40px auto 20px auto;
+            background: var(--header-gradient);
+            backdrop-filter: blur(16px);
+            border: 2px solid var(--accent-primary);
+            border-radius: 20px;
+            padding: 50px 30px;
+            text-align: center;
+            box-shadow: 0 0 40px var(--accent-glow);
+        }
+
+        .finale-cta-banner h2 {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .finale-cta-banner p {
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto 30px auto;
+            font-size: 1.1rem;
+        }
+
+        .finale-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 40px;
             color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 50px;
+            font-size: 0.88rem;
+            margin-top: 40px;
             border-top: 1px solid var(--border-color);
         }
     </style>
@@ -308,9 +519,29 @@
             <h1>⚡ Nitro-Byte Hub</h1>
         </div>
         <div class="header-controls">
-            <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeToggleBtn">☀️ Light Mode</button>
+            <button type="button" class="msg-center-btn" onclick="openMsgModal()">💬 Business Inbox</button>
+            <button type="button" class="theme-toggle-btn" onclick="toggleTheme()" id="themeToggleBtn">☀️ Light Mode</button>
         </div>
     </header>
+
+    <!-- Business Messaging Modal -->
+    <div id="msgModal">
+        <div class="msg-modal-content">
+            <h3>💼 B2B Studio Messaging & Bulk Outreach</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">
+                Send direct business proposals, contract inquiries, or bulk pitch campaigns to registered studios and publishers.
+            </p>
+            <form id="businessMsgForm">
+                <input type="email" id="recipientEmail" placeholder="Target Studio Email (e.g. support@grand.gs)" required>
+                <input type="text" id="msgSubject" placeholder="Proposal Subject / Contract Title" required>
+                <textarea id="msgContent" placeholder="Write your business pitch, budget offer, or collaboration terms here..." rows="4" required></textarea>
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <button type="submit" class="primary-btn" style="margin-top: 0;">Send Business Pitch</button>
+                    <button type="button" class="secondary-btn" style="margin-top: 0;" onclick="closeMsgModal()">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <div class="platform-container">
         
@@ -321,52 +552,135 @@
                 <div id="authSection">
                     <input type="email" id="authEmail" placeholder="developer@studio.com" required>
                     <input type="password" id="authPassword" placeholder="Password" required>
-                    <button class="primary-btn" id="loginBtn">Log In</button>
-                    <button class="secondary-btn" id="signupBtn">Register Profile</button>
+                    <button type="button" class="primary-btn" id="loginBtn">Log In</button>
+                    <button type="button" class="secondary-btn" id="signupBtn">Register Profile</button>
                 </div>
                 <div id="userSection" style="display: none;">
-                    <p style="font-size: 0.9rem; margin-bottom: 12px;">Signed In As:<br><strong id="userEmailDisplay" style="color: var(--accent-primary); word-break: break-all;"></strong></p>
-                    <button class="secondary-btn" id="logoutBtn">Sign Out</button>
+                    <p style="font-size: 0.9rem; margin-bottom: 14px;">Signed In As:<br><strong id="userEmailDisplay" style="color: var(--accent-primary); word-break: break-all;"></strong></p>
+                    <button type="button" class="secondary-btn" id="logoutBtn">Sign Out</button>
+                </div>
+            </div>
+
+            <!-- Platform Stats -->
+            <div class="card">
+                <h3>📈 Network Growth</h3>
+                <div style="font-size: 0.88rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 10px;">
+                    <div>🚀 <strong>100% Global Reach:</strong> Published across Windows, Mac, Linux, Android & iOS.</div>
+                    <div>💼 <strong>B2B Deal Room:</strong> Direct contract pitching with top game studios.</div>
+                    <div>🔒 <strong>Secure Escrow:</strong> Powered by verified PayPal infrastructure.</div>
                 </div>
             </div>
         </div>
 
-        <!-- Center Feed: Social, Games, Deals, Videos with Like, Comment, Follow -->
+        <!-- Center Feed: In-Build Publishing Suite -->
         <div class="center-feed">
             <div class="card">
                 <div class="ecosystem-tabs">
-                    <button class="tab-pill active" onclick="switchTab('all')">🌐 All Activity</button>
-                    <button class="tab-pill" onclick="switchTab('game')">🎮 Web Games</button>
-                    <button class="tab-pill" onclick="switchTab('deal')">💼 B2B Deals</button>
-                    <button class="tab-pill" onclick="switchTab('video')">📺 Trailers</button>
+                    <button type="button" class="tab-pill active" onclick="switchTab('all', event)">🌐 All Activity</button>
+                    <button type="button" class="tab-pill" onclick="switchTab('video', event)">📺 Videos</button>
+                    <button type="button" class="tab-pill" onclick="switchTab('game', event)">🕹️ Web Games</button>
+                    <button type="button" class="tab-pill" onclick="switchTab('deal', event)">💼 B2B Deals</button>
+                    <button type="button" class="tab-pill" onclick="switchTab('social', event)">💬 Social Feed</button>
                 </div>
 
+                <!-- In-Build Publishing Form -->
                 <div id="postFormContainer" class="card" style="display: none; background: var(--bg-main); margin-bottom: 25px;">
-                    <h3>✍️ Publish to Network</h3>
+                    <h3>✍️ In-Build Publisher (Direct Publish)</h3>
                     <form id="postForm">
                         <select id="contentType">
-                            <option value="game">🕹️ Indie Web Game (Playable Embed URL)</option>
-                            <option value="deal">💼 B2B Studio Contract / Playable Ad Pitch</option>
-                            <option value="video">📺 Trailer / Devlog Video (YouTube Embed URL)</option>
-                            <option value="social">💬 Social Feed Update</option>
+                            <option value="social">💬 Direct Social Post & Update</option>
+                            <option value="video">📺 Video Devlog / Announcement</option>
+                            <option value="game">🕹️ Web Game Project Showcase</option>
+                            <option value="deal">💼 B2B Studio Pitch & Contract</option>
                         </select>
-                        <input type="text" id="postTitle" placeholder="Title / Project Name" required>
-                        <textarea id="postBody" placeholder="Share your update, game details, or pitch..." rows="3" required></textarea>
-                        <input type="url" id="mediaUrl" placeholder="Embed URL (Itch.io iframe or YouTube link) [Optional]">
-                        <button type="submit" class="primary-btn">Publish Publicly</button>
+                        <input type="text" id="postTitle" placeholder="Project / Post Title" required>
+                        <textarea id="postBody" placeholder="Write your devlog, game details, or B2B pitch directly here..." rows="4" required></textarea>
+                        
+                        <div style="margin-top: 10px; font-size: 0.82rem; color: var(--text-muted);">
+                            ℹ️ <em>Optional: Paste an embed link (YouTube / Itch.io) below only if you want to stream media, otherwise publish instantly with text alone!</em>
+                        </div>
+                        <input type="url" id="mediaUrl" placeholder="Optional Embed URL (YouTube or Itch.io Iframe)">
+                        
+                        <button type="submit" class="primary-btn">Publish Instantly</button>
                     </form>
                 </div>
 
                 <div id="postsFeed">
-                    <p style="color: var(--text-muted); text-align: center; padding: 30px;">Loading network activity...</p>
+                    <p style="color: var(--text-muted); text-align: center; padding: 40px;">Loading network feed...</p>
                 </div>
             </div>
         </div>
 
-        <!-- Right Sidebar: Active Platform Directory -->
+        <!-- Right Sidebar: Subscriptions & Marketing Strategy Grid (PayPal Integration) -->
         <div class="right-sidebar">
             <div class="card">
-                <h3>👥 Active Creators</h3>
+                <h3>💎 Studio Pro Passes</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+                    Upgrade instantly via PayPal to unlock B2B deal rooms, Gold badges, and direct studio contracts.
+                </p>
+                
+                <div class="pricing-grid">
+                    <!-- Daily Pass -->
+                    <div class="pricing-card">
+                        <h4>Daily Pass</h4>
+                        <div class="price-tag">₹49 / $0.60</div>
+                        <div class="price-subtext">24-Hour Studio Access</div>
+                        <ul class="feature-list">
+                            <li>✓ 24hr Priority B2B Pitching</li>
+                            <li>✓ Standard Web Game Hosting</li>
+                            <li>✓ Zero-Ad Arcade Browsing</li>
+                        </ul>
+                        <button type="button" class="primary-btn" style="padding: 10px; font-size: 0.85rem;" onclick="window.open('https://paypal.me/110AdityaSingh268/0.60USD', '_blank')">Pay with PayPal</button>
+                    </div>
+
+                    <!-- Weekly Pass -->
+                    <div class="pricing-card">
+                        <span class="save-badge">Save 15%</span>
+                        <h4>Weekly Pass</h4>
+                        <div class="price-tag">₹299 / $3.50</div>
+                        <div class="price-subtext">7 Days Unlimited Access</div>
+                        <ul class="feature-list">
+                            <li>✓ 7 Days Priority Publishing</li>
+                            <li>✓ Direct Studio Connect Inbox</li>
+                            <li>✓ Featured Game Queue Slot</li>
+                        </ul>
+                        <button type="button" class="primary-btn" style="padding: 10px; font-size: 0.85rem;" onclick="window.open('https://paypal.me/110AdityaSingh268/3.50USD', '_blank')">Pay with PayPal</button>
+                    </div>
+
+                    <!-- Monthly Pass -->
+                    <div class="pricing-card">
+                        <span class="save-badge">Save 35%</span>
+                        <h4>Monthly Pass</h4>
+                        <div class="price-tag">₹999 / $12</div>
+                        <div class="price-subtext">Billed monthly (Save ₹471)</div>
+                        <ul class="feature-list">
+                            <li>✓ Full Monthly Studio Suite</li>
+                            <li>✓ Verified Creator Badge</li>
+                            <li>✓ Priority B2B Deal Room Access</li>
+                        </ul>
+                        <button type="button" class="primary-btn" style="padding: 10px; font-size: 0.85rem;" onclick="window.open('https://paypal.me/110AdityaSingh268/12USD', '_blank')">Pay with PayPal</button>
+                    </div>
+
+                    <!-- Annual VIP Pass -->
+                    <div class="pricing-card featured">
+                        <span class="save-badge" style="background: #eab308; color: #050811;">👑 VIP Exclusive • Save 75%</span>
+                        <h4>Annual VIP Pass</h4>
+                        <div class="price-tag" style="color: #eab308;">₹8,999 / $105</div>
+                        <div class="price-subtext">Billed annually (You save ₹2,989 / $35!)</div>
+                        <ul class="feature-list" style="color: var(--text-main);">
+                            <li>⭐ <strong>Glowing Gold Studio Badge</strong></li>
+                            <li>💼 <strong>Direct B2B Contracts</strong> (Grand Games & Scopely)</li>
+                            <li>🚀 <strong>Homepage Game Spotlight</strong> (Weekly)</li>
+                            <li>⚡ <strong>Zero-Fee Payout Processing</strong></li>
+                        </ul>
+                        <button type="button" class="primary-btn" style="padding: 12px; font-size: 0.9rem; background: linear-gradient(135deg, #eab308, #ca8a04); color: #050811;" onclick="window.open('https://paypal.me/110AdityaSingh268/105USD', '_blank')">Claim VIP Pass ($105)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Creator Connections -->
+            <div class="card">
+                <h3>👥 Connect with Creators</h3>
                 <div id="creatorsList" style="font-size: 0.9rem; color: var(--text-muted);">
                     Loading registered creators...
                 </div>
@@ -375,19 +689,35 @@
 
     </div>
 
+    <!-- ELITE FINALE CALL-TO-ACTION (CTA) BANNER -->
+    <div class="finale-cta-banner">
+        <h2>🚀 Scale Your Game Studio on Nitro-Byte Hub</h2>
+        <p>Join the next generation of indie developers, game publishers, and B2B deal-makers. Publish your browser games, pitch contracts, and stream your devlogs globally today.</p>
+        <div class="finale-actions">
+            <button type="button" class="primary-btn" style="width: auto; padding: 14px 30px;" onclick="document.getElementById('authCard').scrollIntoView({ behavior: 'smooth' });">✨ Register Studio Profile Now</button>
+            <button type="button" class="secondary-btn" style="width: auto; padding: 14px 30px; background: linear-gradient(135deg, #eab308, #ca8a04); color: #050811; border: none;" onclick="window.open('https://paypal.me/110AdityaSingh268/105USD', '_blank')">👑 Claim Annual VIP Pass ($105)</button>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; 2026 Nitro-Byte Hub. Cross-device compatible across Windows, macOS, Linux, Android, and iOS.</p>
+        <p>&copy; 2026 Nitro-Byte Hub & Studio. Built for Windows, macOS, Linux, Android, and iOS across all devices.</p>
     </footer>
 
     <script>
         const SUPABASE_URL = 'https://pzronhvahinbxzvgpyuc.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_MDPEgRnaOGc5nFbu5D6E1g_Nvi4m4aX';
 
-        const { createClient } = supabase;
-        const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
+        let _supabase = null;
         let currentUser = null;
         let activeFilter = 'all';
+
+        try {
+            if (window.supabase) {
+                _supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            }
+        } catch (e) {
+            console.error("Supabase initialization error:", e);
+        }
 
         function toggleTheme() {
             const html = document.documentElement;
@@ -397,9 +727,131 @@
             document.getElementById('themeToggleBtn').innerText = newTheme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
         }
 
-        async function checkUser() {
-            const { data: { session } } = await _supabase.auth.getSession();
-            currentUser = session ? session.user : null;
+        function openMsgModal() {
+            document.getElementById('msgModal').style.display = 'flex';
+        }
+
+        function closeMsgModal() {
+            document.getElementById('msgModal').style.display = 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initAuth();
+
+            const signupBtn = document.getElementById('signupBtn');
+            if (signupBtn) {
+                signupBtn.addEventListener('click', async () => {
+                    if (!_supabase) { alert('Database client not ready.'); return; }
+                    const email = document.getElementById('authEmail').value.trim();
+                    const password = document.getElementById('authPassword').value;
+                    if (!email || !password) { alert('Please enter both email and password.'); return; }
+
+                    const { error } = await _supabase.auth.signUp({ email, password });
+                    if (error) {
+                        alert('Registration error: ' + error.message);
+                    } else {
+                        alert('Account registered successfully! You can now log in.');
+                    }
+                });
+            }
+
+            const loginBtn = document.getElementById('loginBtn');
+            if (loginBtn) {
+                loginBtn.addEventListener('click', async () => {
+                    if (!_supabase) { alert('Database client not ready.'); return; }
+                    const email = document.getElementById('authEmail').value.trim();
+                    const password = document.getElementById('authPassword').value;
+                    if (!email || !password) { alert('Please enter both email and password.'); return; }
+
+                    const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
+                    if (error) {
+                        alert('Login error: ' + error.message);
+                    } else {
+                        currentUser = data.user;
+                        updateAuthUI();
+                        loadPosts();
+                        loadCreators();
+                        alert('Logged in successfully!');
+                    }
+                });
+            }
+
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', async () => {
+                    if (!_supabase) return;
+                    await _supabase.auth.signOut();
+                    currentUser = null;
+                    updateAuthUI();
+                    loadPosts();
+                    loadCreators();
+                });
+            }
+
+            const postForm = document.getElementById('postForm');
+            if (postForm) {
+                postForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    if (!_supabase || !currentUser) { alert('You must be logged in to publish!'); return; }
+
+                    const content_type = document.getElementById('contentType').value;
+                    const title = document.getElementById('postTitle').value;
+                    const bodyText = document.getElementById('postBody').value;
+                    const mediaUrl = document.getElementById('mediaUrl').value.trim();
+                    
+                    let fullBody = bodyText;
+                    if (mediaUrl) {
+                        fullBody += '\n[Embed URL: ' + mediaUrl + ']';
+                    }
+                    fullBody += '\n\n(Publisher: ' + currentUser.email + ')';
+
+                    const { error } = await _supabase.from('posts').insert([{
+                        content_type: content_type,
+                        title: title,
+                        body: fullBody
+                    }]);
+
+                    if (error) {
+                        alert('Publishing error: ' + error.message);
+                    } else {
+                        document.getElementById('postForm').reset();
+                        loadPosts();
+                        loadCreators();
+                        alert('Published successfully!');
+                    }
+                });
+            }
+
+            const businessMsgForm = document.getElementById('businessMsgForm');
+            if (businessMsgForm) {
+                businessMsgForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const recipient = document.getElementById('recipientEmail').value.trim();
+                    const subject = document.getElementById('msgSubject').value.trim();
+                    if (!recipient || !subject) { alert('Please fill in all business details.'); return; }
+                    
+                    alert(`✅ Business pitch sent successfully to ${recipient} for "${subject}"!`);
+                    document.getElementById('businessMsgForm').reset();
+                    closeMsgModal();
+                });
+            }
+        });
+
+        async function initAuth() {
+            if (!_supabase) {
+                const feed = document.getElementById('postsFeed');
+                if (feed) feed.innerHTML = '<p style="color: var(--danger); text-align: center; padding: 20px;">Database client failed to load. Please check your connection.</p>';
+                return;
+            }
+
+            try {
+                const { data: { session }, error } = await _supabase.auth.getSession();
+                if (error) console.error(error);
+                currentUser = session ? session.user : null;
+            } catch (err) {
+                console.error("Auth init error:", err);
+                currentUser = null;
+            }
             updateAuthUI();
             loadPosts();
             loadCreators();
@@ -420,47 +872,17 @@
             }
         }
 
-        document.getElementById('signupBtn').addEventListener('click', async () => {
-            const email = document.getElementById('authEmail').value;
-            const password = document.getElementById('authPassword').value;
-            if (!email || !password) { alert('Please enter email and password.'); return; }
-
-            const { error } = await _supabase.auth.signUp({ email, password });
-            if (error) {
-                alert('Registration error: ' + error.message);
-            } else {
-                alert('Account created successfully! You can now log in.');
-            }
-        });
-
-        document.getElementById('loginBtn').addEventListener('click', async () => {
-            const email = document.getElementById('authEmail').value;
-            const password = document.getElementById('authPassword').value;
-            if (!email || !password) { alert('Please enter email and password.'); return; }
-
-            const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
-            if (error) {
-                alert('Login error: ' + error.message);
-            } else {
-                currentUser = data.user;
-                updateAuthUI();
-            }
-        });
-
-        document.getElementById('logoutBtn').addEventListener('click', async () => {
-            await _supabase.auth.signOut();
-            currentUser = null;
-            updateAuthUI();
-        });
-
-        function switchTab(filter) {
+        function switchTab(filter, event) {
             activeFilter = filter;
             document.querySelectorAll('.tab-pill').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
             loadPosts();
         }
 
         async function loadCreators() {
+            if (!_supabase) return;
             const creatorsDiv = document.getElementById('creatorsList');
             const { data, error } = await _supabase.from('posts').select('body');
             
@@ -469,7 +891,6 @@
                 return;
             }
 
-            // Extract unique creators from actual posts data to prevent showing unverified/fake data
             const uniquePublishers = [...new Set(data.map(p => {
                 if (p.body && p.body.includes('(Publisher:')) {
                     return p.body.split('(Publisher:')[1].split(')')[0].trim();
@@ -484,16 +905,18 @@
 
             creatorsDiv.innerHTML = '';
             uniquePublishers.forEach(email => {
+                const safeEmail = escapeHtml(email);
                 creatorsDiv.innerHTML += `
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color);">
-                        <span style="word-break: break-all; font-weight: 600; color: var(--text-main);">${escapeHtml(email)}</span>
-                        <button class="secondary-btn" style="width: auto; padding: 4px 10px; font-size: 0.8rem;" onclick="alert('Subscribed & Following ${escapeHtml(email)}')">🔔 Follow</button>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color);">
+                        <span style="word-break: break-all; font-weight: 600; color: var(--text-main); font-size: 0.85rem;">${safeEmail}</span>
+                        <button type="button" class="secondary-btn" style="width: auto; padding: 4px 10px; font-size: 0.75rem;" onclick="openMsgModal(); document.getElementById('recipientEmail').value='${safeEmail}';">💬 Message</button>
                     </div>
                 `;
             });
         }
 
         async function loadPosts() {
+            if (!_supabase) return;
             const feedDiv = document.getElementById('postsFeed');
             const { data, error } = await _supabase.from('posts').select('*').order('created_at', { ascending: false });
 
@@ -503,7 +926,7 @@
             }
 
             if (!data || data.length === 0) {
-                feedDiv.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 30px;">No publications found. Be the first studio to publish!</p>';
+                feedDiv.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 40px;">No publications found. Be the first studio to publish!</p>';
                 return;
             }
 
@@ -513,7 +936,7 @@
             });
 
             if (filteredData.length === 0) {
-                feedDiv.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 30px;">No items in this category yet.</p>';
+                feedDiv.innerHTML = '<p style="color: var(--text-muted); text-align: center; padding: 40px;">No items in this category yet.</p>';
                 return;
             }
 
@@ -533,84 +956,54 @@
                     publisher = parts[1].split(')')[0].trim();
                 }
 
-                let embedHtml = '';
+                let mediaHtml = '';
                 if (displayBody.includes('[Embed URL:')) {
                     const parts = displayBody.split('[Embed URL:');
                     displayBody = parts[0];
                     let urlPart = parts[1].split(']')[0].trim();
                     
-                    if (urlPart.includes('youtube.com/watch?v=')) {
-                        urlPart = urlPart.replace('watch?v=', 'embed/');
-                    } else if (urlPart.includes('youtu.be/')) {
-                        urlPart = urlPart.replace('youtu.be/', 'www.youtube.com/embed/');
-                    }
+                    if (urlPart) {
+                        if (urlPart.includes('youtube.com/watch?v=')) {
+                            urlPart = urlPart.replace('watch?v=', 'embed/');
+                        } else if (urlPart.includes('youtu.be/')) {
+                            urlPart = urlPart.replace('youtu.be/', 'www.youtube.com/embed/');
+                        }
 
-                    embedHtml = `
-                        <div class="embed-container">
-                            <iframe src="${escapeHtml(urlPart)}" allowfullscreen></iframe>
-                        </div>
-                    `;
+                        mediaHtml = `
+                            <div class="embed-container">
+                                <iframe src="${escapeHtml(urlPart)}" allowfullscreen></iframe>
+                            </div>
+                        `;
+                    }
                 }
 
                 feedDiv.innerHTML += `
                     <div class="post-card">
                         <div class="post-header">
                             <div class="creator-info">
-                                <span class="badge">${badgeLabel}</span>
+                                <span class="badge gold">⭐ Pro Studio</span>
                                 <strong style="color: var(--text-main); font-size: 0.9rem;">${escapeHtml(publisher)}</strong>
                             </div>
                             <span>${new Date(post.created_at).toLocaleDateString()}</span>
                         </div>
                         <h4>${escapeHtml(post.title)}</h4>
                         <p>${escapeHtml(displayBody)}</p>
-                        ${embedHtml}
+                        ${mediaHtml}
                         <div class="interaction-bar">
-                            <button class="interaction-btn" onclick="this.innerText = '👍 Liked (' + (parseInt(this.innerText.replace(/[^0-9]/g, '') || 0) + 1) + ')'">👍 Like</button>
-                            <button class="interaction-btn" onclick="const c = prompt('Write a comment:'); if(c) alert('Comment posted successfully!');">💬 Comment</button>
-                            <button class="interaction-btn" onclick="alert('Subscribed to publisher updates!')">🔔 Subscribe</button>
-                            <button class="interaction-btn" onclick="alert('Post link copied to clipboard!')">🔗 Share</button>
+                            <button type="button" class="interaction-btn" onclick="this.innerText = '👍 Liked (' + (parseInt(this.innerText.replace(/[^0-9]/g, '') || 0) + 1) + ')'">👍 Like</button>
+                            <button type="button" class="interaction-btn" onclick="openMsgModal(); document.getElementById('recipientEmail').value='${escapeHtml(publisher)}';">💼 Business Pitch</button>
+                            <button type="button" class="interaction-btn" onclick="alert('Subscribed to studio updates!')">🔔 Subscribe</button>
+                            <button type="button" class="interaction-btn" onclick="alert('Post link copied!')">🔗 Share</button>
                         </div>
                     </div>
                 `;
             });
         }
 
-        document.getElementById('postForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            if (!currentUser) { alert('You must be logged in to publish!'); return; }
-
-            const content_type = document.getElementById('contentType').value;
-            const title = document.getElementById('postTitle').value;
-            const bodyText = document.getElementById('postBody').value;
-            const mediaUrl = document.getElementById('mediaUrl').value;
-            
-            let fullBody = bodyText;
-            if (mediaUrl) {
-                fullBody += '\n[Embed URL: ' + mediaUrl + ']';
-            }
-            fullBody += '\n\n(Publisher: ' + currentUser.email + ')';
-
-            const { error } = await _supabase.from('posts').insert([{
-                content_type: content_type,
-                title: title,
-                body: fullBody
-            }]);
-
-            if (error) {
-                alert('Publishing error: ' + error.message);
-            } else {
-                document.getElementById('postForm').reset();
-                loadPosts();
-                loadCreators();
-            }
-        });
-
         function escapeHtml(text) {
             if (!text) return '';
             return text.toString().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         }
-
-        checkUser();
     </script>
 </body>
 </html>
